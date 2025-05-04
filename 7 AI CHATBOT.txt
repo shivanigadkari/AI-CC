@@ -1,0 +1,60 @@
+7. Develop an elementary chatbot for any suitable customer interaction application.
+
+import re
+
+# Define sample responses (rule-based)
+def get_response(user_input):
+    user_input = user_input.lower()
+
+    if re.search(r"\b(hi|hello|hey)\b", user_input):
+        return "Hello! How can I help you today?"
+
+    elif re.search(r"order.*status", user_input):
+        return "Please provide your order ID to check the status."
+
+    elif re.search(r"(return|refund).*policy", user_input):
+        return "Our return policy allows returns within 30 days. Refunds are processed in 5-7 business days."
+
+    elif re.search(r"(cancel|cancellation).*order", user_input):
+        return "You can cancel your order within 12 hours of placing it."
+
+    elif re.search(r"(product|item).*available", user_input):
+        return "Please specify the product name to check its availability."
+
+    elif re.search(r"(thank you|thanks)", user_input):
+        return "You're welcome! Is there anything else I can help you with?"
+
+    elif re.search(r"(bye|exit|quit)", user_input):
+        return "Thank you for chatting with us. Have a great day!"
+
+    else:
+        return "I'm sorry, I didn't understand that. Could you please rephrase?"
+
+# Chat loop
+print("🛒 Welcome to ShopSmart Assistant! Type 'exit' to end the chat.")
+while True:
+    user_input = input("You: ")
+    if user_input.lower() in ["exit", "quit", "bye"]:
+        print("Bot: Thank you for chatting with us. Have a great day!")
+        break
+    response = get_response(user_input)
+    print("Bot:", response)
+
+O/P:
+
+🛒 Welcome to ShopSmart Assistant! Type 'exit' to end the chat.
+You:  HI
+Bot: Hello! How can I help you today?
+You:  WHAT IS YOUR RETURN POLICY
+Bot: Our return policy allows returns within 30 days. Refunds are processed in 5-7 business days.
+You:  HOW CAN I CANCEL THE ORDER
+Bot: You can cancel your order within 12 hours of placing it.
+You:  ORDER STATUS
+Bot: Please provide your order ID to check the status.
+You:  ABC
+Bot: I'm sorry, I didn't understand that. Could you please rephrase?
+You:  THANKS
+Bot: You're welcome! Is there anything else I can help you with?
+You:  EXIT
+Bot: Thank you for chatting with us. Have a great day!
+
